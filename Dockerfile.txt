@@ -1,0 +1,14 @@
+from alpine:latest
+
+RUN apk add --no-cache python3-dev \
+    && pip3 install --upgrade pip 
+	
+RUN apk add gcc && \
+    rm -rf /var/lib/apt/lists/*
+	
+RUN pip3 --no-cache-dir install -r requirements.txt
+
+EXPOSE 5000
+
+ENTRYPOINT ["python3"]
+CMD ["chatpdf1.py"]
